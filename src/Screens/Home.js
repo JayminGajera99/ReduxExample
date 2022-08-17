@@ -1,18 +1,17 @@
 import React from 'react';
 import {StyleSheet, Text, View, Button} from 'react-native';
-import {increment, decrement} from '../redux/action';
-import {useSelector, useDispatch} from 'react-redux';
+import {useSelector} from 'react-redux';
+import actions from '../redux/actions';
 
 const Home = props => {
-  const number = useSelector(state => state.num);
-  const dispatch = useDispatch();
+  const number = useSelector(state => state.counterReducer.num);
 
   const onAdd = () => {
-    dispatch(increment(number));
+    actions.increment(number);
   };
 
   const onDec = () => {
-    dispatch(decrement(number));
+    actions.decrement(number);
   };
 
   return (
